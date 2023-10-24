@@ -26,21 +26,98 @@ public class AddMeal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        Title = new javax.swing.JLabel();
+        breakfastButton = new javax.swing.JRadioButton();
+        lunchButton = new javax.swing.JRadioButton();
+        dinnerButton = new javax.swing.JRadioButton();
+        dessertButton = new javax.swing.JRadioButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Title.setText("Create a new Meal:");
+
+        buttonGroup1.add(breakfastButton);
+        breakfastButton.setText("Breakfast");
+        breakfastButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                breakfastButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(lunchButton);
+        lunchButton.setText("Lunch");
+        lunchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lunchButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(dinnerButton);
+        dinnerButton.setText("Dinner");
+        dinnerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dinnerButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(dessertButton);
+        dessertButton.setText("Dessert");
+        dessertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dessertButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dessertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dinnerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lunchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(breakfastButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Title))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(Title)
+                .addGap(18, 18, 18)
+                .addComponent(breakfastButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lunchButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dinnerButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dessertButton)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void breakfastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breakfastButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_breakfastButtonActionPerformed
+
+    private void lunchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lunchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lunchButtonActionPerformed
+
+    private void dinnerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dinnerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dinnerButtonActionPerformed
+
+    private void dessertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dessertButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dessertButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +155,11 @@ public class AddMeal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Title;
+    private javax.swing.JRadioButton breakfastButton;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton dessertButton;
+    private javax.swing.JRadioButton dinnerButton;
+    private javax.swing.JRadioButton lunchButton;
     // End of variables declaration//GEN-END:variables
 }
