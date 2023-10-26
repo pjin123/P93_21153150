@@ -96,7 +96,7 @@ public class MainMenu extends javax.swing.JFrame {
     //Choose meal
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        ChooseMeal cm = new ChooseMeal();
+        ViewMeal cm = new ViewMeal();
         cm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1MousePressed
