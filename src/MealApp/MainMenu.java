@@ -9,7 +9,6 @@ package MealApp;
  * @author Philip
  */
 public class MainMenu extends javax.swing.JFrame {
-    private MealApp mealApp;
 
     /**
      * Creates new form NewJFrame
@@ -105,7 +104,6 @@ public class MainMenu extends javax.swing.JFrame {
     //Add meal
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        mealApp.addMeal();
         AddMeal am = new AddMeal();
         am.setVisible(true);
         this.dispose();

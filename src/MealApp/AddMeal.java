@@ -4,17 +4,26 @@
  */
 package MealApp;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Philip
  */
 public class AddMeal extends javax.swing.JFrame {
 
+    private ArrayList<Ingredients> ingredients = new ArrayList<>();
+    DefaultListModel<String> ingredientListModel = new DefaultListModel<>();
+
     /**
      * Creates new form AddMeal
      */
     public AddMeal() {
         initComponents();
+        jList1.setModel(ingredientListModel);
     }
 
     /**
@@ -27,48 +36,128 @@ public class AddMeal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         Title = new javax.swing.JLabel();
-        breakfastButton = new javax.swing.JRadioButton();
-        lunchButton = new javax.swing.JRadioButton();
-        dinnerButton = new javax.swing.JRadioButton();
-        dessertButton = new javax.swing.JRadioButton();
+        btnBreakfast = new javax.swing.JRadioButton();
+        btnLunch = new javax.swing.JRadioButton();
+        btnDinner = new javax.swing.JRadioButton();
+        btnDessert = new javax.swing.JRadioButton();
+        mealName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        ingredientName = new javax.swing.JTextField();
+        lblIngredients = new javax.swing.JLabel();
+        btnFinish = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableMeals = new javax.swing.JTable();
+        btnRemove = new javax.swing.JButton();
+        btnAddIngredient = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Title.setText("Create a new Meal:");
 
-        buttonGroup1.add(breakfastButton);
-        breakfastButton.setText("Breakfast");
-        breakfastButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnBreakfast);
+        btnBreakfast.setText("Breakfast");
+        btnBreakfast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                breakfastButtonActionPerformed(evt);
+                btnBreakfastActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(lunchButton);
-        lunchButton.setText("Lunch");
-        lunchButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnLunch);
+        btnLunch.setText("Lunch");
+        btnLunch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lunchButtonActionPerformed(evt);
+                btnLunchActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(dinnerButton);
-        dinnerButton.setText("Dinner");
-        dinnerButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnDinner);
+        btnDinner.setText("Dinner");
+        btnDinner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dinnerButtonActionPerformed(evt);
+                btnDinnerActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(dessertButton);
-        dessertButton.setText("Dessert");
-        dessertButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnDessert);
+        btnDessert.setText("Dessert");
+        btnDessert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dessertButtonActionPerformed(evt);
+                btnDessertActionPerformed(evt);
             }
         });
+
+        mealName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mealNameActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Enter a meal name:");
+
+        ingredientName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingredientNameActionPerformed(evt);
+            }
+        });
+
+        lblIngredients.setText("Ingredients:");
+
+        btnFinish.setText("Finish");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
+
+        tableMeals.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meal Type", "Meal Name", "Ingredients"
+            }
+        ));
+        jScrollPane3.setViewportView(tableMeals);
+
+        btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
+
+        btnAddIngredient.setText("Add Ingredient");
+        btnAddIngredient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddIngredientActionPerformed(evt);
+            }
+        });
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,47 +166,174 @@ public class AddMeal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dessertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dinnerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lunchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(breakfastButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Title))
-                .addContainerGap(203, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnFinish)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ingredientName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAddIngredient))
+                                    .addComponent(mealName)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDessert, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDinner, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLunch, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Title))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(22, 22, 22)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemove))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(Title)
-                .addGap(18, 18, 18)
-                .addComponent(breakfastButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lunchButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dinnerButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dessertButton)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnFinish)
+                            .addComponent(btnRemove)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Title)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBreakfast)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLunch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDinner)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDessert)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(mealName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(28, 28, 28))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ingredientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblIngredients)
+                                .addComponent(btnAddIngredient)))
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void breakfastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breakfastButtonActionPerformed
+    private void btnBreakfastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakfastActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_breakfastButtonActionPerformed
 
-    private void lunchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lunchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lunchButtonActionPerformed
+    }//GEN-LAST:event_btnBreakfastActionPerformed
 
-    private void dinnerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dinnerButtonActionPerformed
+    private void btnLunchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLunchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dinnerButtonActionPerformed
+    }//GEN-LAST:event_btnLunchActionPerformed
 
-    private void dessertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dessertButtonActionPerformed
+    private void btnDinnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDinnerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dessertButtonActionPerformed
+    }//GEN-LAST:event_btnDinnerActionPerformed
+
+    private void btnDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDessertActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDessertActionPerformed
+
+    private void mealNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mealNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mealNameActionPerformed
+
+    private void ingredientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientNameActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_ingredientNameActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+        String mealType = "";
+
+        if (!btnBreakfast.isSelected() && !btnLunch.isSelected() && !btnDinner.isSelected() && !btnDessert.isSelected())
+        {
+            JOptionPane.showMessageDialog(this, "Please select a meal type.", "Missing Meal Type", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String meal = mealName.getText().trim();
+        if (meal.isEmpty()) 
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a meal name.", "Missing Meal Name", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (btnBreakfast.isSelected()) {
+            mealType = "Breakfast";
+        } else if (btnLunch.isSelected()) {
+            mealType = "Lunch";
+        } else if (btnDinner.isSelected()) {
+            mealType = "Dinner";
+        } else if (btnDessert.isSelected()) {
+            mealType = "Dessert";
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tableMeals.getModel();
+        model.addRow(new Object[]{mealType, meal, ingredients.toString()});
+
+        Database db = new Database();
+        db.insertMeal(mealType, meal, ingredients.toString());
+        db.closeConnections();
+        
+        //Clear all fields so new entry can be added
+        buttonGroup1.clearSelection();
+        mealName.setText("");
+        ingredientName.setText("");
+        ingredients.clear();
+        ingredientListModel.clear();
+    }//GEN-LAST:event_btnFinishActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+        int row = tableMeals.getSelectedRow();
+
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "No row is selected", "Select row", JOptionPane.ERROR_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tableMeals.getModel();
+            model.removeRow(row);
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+
+    private void btnAddIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredientActionPerformed
+        // TODO add your handling code here:
+        String ingredientText = ingredientName.getText().trim(); // Get the ingredient from the text field
+        //ArrayList<Ingredients> ingredients = new ArrayList<>();
+        //ingredients.add(new Ingredients(ingredient));
+
+        if (!ingredientText.isEmpty()) { // Check if the ingredient is not empty
+            Ingredients ingredient = (new Ingredients(ingredientText)); // Add the ingredient to the ArrayList
+            ingredients.add(ingredient);
+            ingredientListModel.addElement(ingredient.toString());
+            ingredientName.setText(""); // Clear the text field
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter a valid ingredient.", "Invalid Ingredient", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddIngredientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +372,23 @@ public class AddMeal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JRadioButton breakfastButton;
+    private javax.swing.JButton btnAddIngredient;
+    private javax.swing.JRadioButton btnBreakfast;
+    private javax.swing.JRadioButton btnDessert;
+    private javax.swing.JRadioButton btnDinner;
+    private javax.swing.JButton btnFinish;
+    private javax.swing.JRadioButton btnLunch;
+    private javax.swing.JButton btnRemove;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton dessertButton;
-    private javax.swing.JRadioButton dinnerButton;
-    private javax.swing.JRadioButton lunchButton;
+    private javax.swing.JTextField ingredientName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblIngredients;
+    private javax.swing.JTextField mealName;
+    private javax.swing.JTable tableMeals;
     // End of variables declaration//GEN-END:variables
 }
