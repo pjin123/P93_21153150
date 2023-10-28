@@ -4,10 +4,7 @@
  */
 package MealApp;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  *
@@ -31,22 +28,22 @@ public final class Database {
         System.out.println(dbManager.getConnection());
 
     }
-    
-    public void createTable() {
-    String createTableSQL = "CREATE TABLE MEALS ("
-            + "ID INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-            + "MEAL_TYPE VARCHAR(255),"
-            + "MEAL_NAME VARCHAR(255),"
-            + "INGREDIENTS VARCHAR(1024)"
-            + ")";
 
-    try (Statement statement = conn.createStatement()) {
-        statement.execute(createTableSQL);
-        System.out.println("Table MEALS created successfully...");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+    public void createTable() {
+        String createTableSQL = "CREATE TABLE MEALS ("
+                + "ID INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
+                + "MEAL_TYPE VARCHAR(255),"
+                + "MEAL_NAME VARCHAR(255),"
+                + "INGREDIENTS VARCHAR(1024)"
+                + ")";
+
+        try ( Statement statement = conn.createStatement()) {
+            statement.execute(createTableSQL);
+            System.out.println("Table MEALS created successfully...");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-}
 
     public Connection getConnection() {
         return this.conn;
@@ -90,5 +87,41 @@ public final class Database {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public ResultSet getMeals(String mealType) {
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            String sql = "SELECT * FROM MEALS";
+            if (!mealType.equals("All")) {
+                sql += " WHERE MEAL_TYPE = '" + mealType + "'";
+            }
+            resultSet = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return resultSet;
+    }
+
+    public void removeMeal(String mealName) {
+    Connection connection = this.conn;
+    Statement statement = null;
+
+    try {
+        statement = connection.createStatement();
+        String sql = "DELETE FROM MEALS WHERE MEAL_NAME = '" + mealName + "'";
+        statement.executeUpdate(sql);
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    } finally {
+        try {
+            if (statement != null) statement.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     }
 }

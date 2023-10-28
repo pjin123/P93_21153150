@@ -7,7 +7,6 @@ package MealApp;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,13 +47,10 @@ public class AddMeal extends javax.swing.JFrame {
         ingredientName = new javax.swing.JTextField();
         lblIngredients = new javax.swing.JLabel();
         btnFinish = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableMeals = new javax.swing.JTable();
-        btnRemove = new javax.swing.JButton();
         btnAddIngredient = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,23 +125,6 @@ public class AddMeal extends javax.swing.JFrame {
             }
         });
 
-        tableMeals.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Meal Type", "Meal Name", "Ingredients"
-            }
-        ));
-        jScrollPane3.setViewportView(tableMeals);
-
-        btnRemove.setText("Remove");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-
         btnAddIngredient.setText("Add Ingredient");
         btnAddIngredient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,8 +139,12 @@ public class AddMeal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Meals Added");
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,10 +154,10 @@ public class AddMeal extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFinish)
-                        .addGap(396, 396, 396)
-                        .addComponent(btnRemove))
+                        .addGap(486, 486, 486))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,11 +180,7 @@ public class AddMeal extends javax.swing.JFrame {
                                     .addComponent(btnBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Title))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
-                .addGap(17, 17, 17))
+                        .addGap(481, 481, 481))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,14 +211,10 @@ public class AddMeal extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(352, 352, 352)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFinish)
-                            .addComponent(btnRemove))))
+                            .addComponent(btnBack))))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -276,15 +251,13 @@ public class AddMeal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String mealType = "";
 
-        if (!btnBreakfast.isSelected() && !btnLunch.isSelected() && !btnDinner.isSelected() && !btnDessert.isSelected())
-        {
+        if (!btnBreakfast.isSelected() && !btnLunch.isSelected() && !btnDinner.isSelected() && !btnDessert.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select a meal type.", "Missing Meal Type", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         String meal = mealName.getText().trim();
-        if (meal.isEmpty()) 
-        {
+        if (meal.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a meal name.", "Missing Meal Name", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -299,13 +272,10 @@ public class AddMeal extends javax.swing.JFrame {
             mealType = "Dessert";
         }
 
-        DefaultTableModel model = (DefaultTableModel) tableMeals.getModel();
-        model.addRow(new Object[]{mealType, meal, ingredients.toString()});
-
         Database db = new Database();
         db.insertMeal(mealType, meal, ingredients.toString());
         db.closeConnections();
-        
+
         //Clear all fields so new entry can be added
         buttonGroup1.clearSelection();
         mealName.setText("");
@@ -313,18 +283,6 @@ public class AddMeal extends javax.swing.JFrame {
         ingredients.clear();
         ingredientListModel.clear();
     }//GEN-LAST:event_btnFinishActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // TODO add your handling code here:
-        int row = tableMeals.getSelectedRow();
-
-        if (row < 0) {
-            JOptionPane.showMessageDialog(this, "No row is selected", "Select row", JOptionPane.ERROR_MESSAGE);
-        } else {
-            DefaultTableModel model = (DefaultTableModel) tableMeals.getModel();
-            model.removeRow(row);
-        }
-    }//GEN-LAST:event_btnRemoveActionPerformed
 
 
     private void btnAddIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredientActionPerformed
@@ -342,6 +300,13 @@ public class AddMeal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid ingredient.", "Invalid Ingredient", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddIngredientActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,23 +346,20 @@ public class AddMeal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JButton btnAddIngredient;
+    private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnBreakfast;
     private javax.swing.JRadioButton btnDessert;
     private javax.swing.JRadioButton btnDinner;
     private javax.swing.JButton btnFinish;
     private javax.swing.JRadioButton btnLunch;
-    private javax.swing.JButton btnRemove;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField ingredientName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIngredients;
     private javax.swing.JTextField mealName;
-    private javax.swing.JTable tableMeals;
     // End of variables declaration//GEN-END:variables
 }
