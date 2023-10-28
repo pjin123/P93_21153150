@@ -1,0 +1,20 @@
+Sat Oct 28 19:21:50 NZDT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Sat Oct 28 19:21:50 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-74f2-2e34-ffffe9dadca8 
+on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\MealDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Loaded from file:/C:/Users/Philip/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Philip\Documents\NetBeansProjects\P93_21153150
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Oct 28 19:23:28 NZDT 2023: Shutting down Derby engine
+----------------------------------------------------------------
+Sat Oct 28 19:23:28 NZDT 2023:
+Shutting down instance a816c00e-018b-74f2-2e34-ffffe9dadca8 on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\MealDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------

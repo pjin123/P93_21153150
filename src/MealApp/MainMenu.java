@@ -49,11 +49,6 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnViewMeals.setText("View Meals");
-        btnViewMeals.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnViewMealsMousePressed(evt);
-            }
-        });
         btnViewMeals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewMealsActionPerformed(evt);
@@ -61,9 +56,9 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnAddMeals.setText("Add Meals");
-        btnAddMeals.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAddMealsMouseClicked(evt);
+        btnAddMeals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMealsActionPerformed(evt);
             }
         });
 
@@ -105,24 +100,17 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnViewMealsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMealsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnViewMealsActionPerformed
-
-    //Choose meal
-    private void btnViewMealsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewMealsMousePressed
-        // TODO add your handling code here:
         ViewMeal viewMeal = new ViewMeal();
         viewMeal.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnViewMealsMousePressed
+    }//GEN-LAST:event_btnViewMealsActionPerformed
 
-    //Add meal
-    private void btnAddMealsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMealsMouseClicked
+    private void btnAddMealsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealsActionPerformed
         // TODO add your handling code here:
         AddMeal addMeal = new AddMeal();
         addMeal.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnAddMealsMouseClicked
-
+    }//GEN-LAST:event_btnAddMealsActionPerformed
 
     /**
      * @param args the command line arguments
