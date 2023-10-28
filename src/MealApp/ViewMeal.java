@@ -184,7 +184,8 @@ public class ViewMeal extends javax.swing.JFrame {
     }
 
     private void viewTable(String mealType) {
-        ResultSet rs = db.getMeals(mealType); // Get meals from the database
+        //Get meals from the MealDB
+        ResultSet rs = db.getMeals(mealType);
 
         try {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
