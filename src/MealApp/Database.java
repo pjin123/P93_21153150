@@ -24,12 +24,16 @@ public final class Database {
     }
 
     public static void main(String[] args) {
-        Database dbManager = new Database();
-        System.out.println(dbManager.getConnection());
-
+        Database database = new Database();
+        System.out.println(database.getConnection());
     }
 
     public void createTable() {
+        if (conn == null) {
+            System.out.println("Connection is null. Unable to create table.");
+            return;
+        }
+
         String createTableSQL = "CREATE TABLE MEALS ("
                 + "ID INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
                 + "MEAL_TYPE VARCHAR(255),"
@@ -39,7 +43,7 @@ public final class Database {
         try ( Statement statement = conn.createStatement()) {
             DatabaseMetaData dbm = conn.getMetaData();
             ResultSet tables = dbm.getTables(null, null, "MEALS", null);
-            //Check if table already exists
+            // Check if table already exists
             if (!tables.next()) {
                 statement.execute(createTableSQL);
                 System.out.println("Table MEALS created successfully...");
