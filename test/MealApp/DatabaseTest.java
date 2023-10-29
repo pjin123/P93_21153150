@@ -40,9 +40,7 @@ public class DatabaseTest {
     }
 
     @Test
-    /*
-    Test if inserted meal is added to the MealDB table
-     */
+    //Test if inserted meal is added to the MealDB table
     public void testInsertMeal() {
         Database database = new Database();
         String mealType = "Breakfast";
@@ -77,6 +75,7 @@ public class DatabaseTest {
     }
 
     @Test
+    //Test if correct meal type is returned
     public void testGetMealsByType() {
         Database database = new Database();
         String mealTypeToTest = "Breakfast";
@@ -98,6 +97,7 @@ public class DatabaseTest {
     }
 
     @Test
+    //Check to see if there are entries in the table
     public void testIsTableEmpty() {
         Database database = new Database();
 
@@ -116,6 +116,7 @@ public class DatabaseTest {
     }
 
     @Test
+    //Test if a specific meal is retrievable from the database
     public void testRetrieveSpecificMeal() {
         Database database = new Database();
         String mealType = "Breakfast";
@@ -142,10 +143,8 @@ public class DatabaseTest {
         assertTrue(mealExists);
     }
 
-    /**
-     * Test of removeMeal method, of class Database.
-     */
     @Test
+    //Test if a meal is successfully removed from the database
     public void testRemoveMeal() {
         Database database = new Database();
         String mealType = "Breakfast";
