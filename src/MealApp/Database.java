@@ -12,6 +12,7 @@ import java.sql.*;
  */
 public final class Database {
 
+    //Database connection details
     private static final String URL = "jdbc:derby:MealDB_Ebd; create=true";
     private static final String USER_NAME = "pdc";
     private static final String PASSWORD = "123";
@@ -23,17 +24,15 @@ public final class Database {
         createTable();
     }
 
-    public static void main(String[] args) {
-        Database database = new Database();
-        System.out.println(database.getConnection());
-    }
-
+    //createTable method
     public void createTable() {
+        //Error message if no connection
         if (conn == null) {
-            System.out.println("Connection is null. Unable to create table.");
+            System.out.println("Connection is null. Unable to create table");
             return;
         }
 
+        //Table Creation
         String createTableSQL = "CREATE TABLE MEALS ("
                 + "ID INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
                 + "MEAL_TYPE VARCHAR(255),"
@@ -43,10 +42,9 @@ public final class Database {
         try ( Statement statement = conn.createStatement()) {
             DatabaseMetaData dbm = conn.getMetaData();
             ResultSet tables = dbm.getTables(null, null, "MEALS", null);
-            // Check if table already exists
+            //Create table if table does not already exists in the database
             if (!tables.next()) {
                 statement.execute(createTableSQL);
-                System.out.println("Table MEALS created successfully...");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -57,20 +55,23 @@ public final class Database {
         return this.conn;
     }
 
-    //Establish connection with database
+    //establishConnection method
     public void establishConnection() {
+        //Use database connection details to connect if there is no connection already
         if (this.conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + " Get Connected Successfully ....");
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
         }
     }
 
-    //Close connection with database
+    //closeConnections method
     public void closeConnections() {
+        System.out.println("Closing Connections");
+        
+        //Close connection if there is a connection
         if (conn != null) {
             try {
                 conn.close();
@@ -80,10 +81,11 @@ public final class Database {
         }
     }
 
+    //insertMeal method
     public void insertMeal(String mealType, String mealName, String ingredients) {
-        //Connection connection = this.conn;
         Statement statement = null;
 
+        //Take the parameters of the method and store into database table
         try {
             statement = conn.createStatement();
             String sql = "INSERT INTO MEALS (MEAL_TYPE, MEAL_NAME, INGREDIENTS) VALUES ('"
@@ -97,8 +99,8 @@ public final class Database {
         }
     }
 
+    //getMeals method
     public ResultSet getMeals(String mealType) {
-        //Connection connection = this.conn;
         Statement statement = null;
         ResultSet resultSet = null;
         try {
@@ -107,6 +109,7 @@ public final class Database {
             if (!mealType.equals("All")) {
                 sql += " WHERE MEAL_TYPE = '" + mealType + "'";
             }
+            //Update resultSet to entry in table
             resultSet = statement.executeQuery(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -114,12 +117,13 @@ public final class Database {
         return resultSet;
     }
 
+    //removeMeal method
     public void removeMeal(String mealName) {
-        Connection connection = this.conn;
         Statement statement = null;
 
         try {
-            statement = connection.createStatement();
+            statement = conn.createStatement();
+            //Remove the entry from the table where mealName is
             String sql = "DELETE FROM MEALS WHERE MEAL_NAME = '" + mealName + "'";
             statement.executeUpdate(sql);
         } catch (SQLException ex) {

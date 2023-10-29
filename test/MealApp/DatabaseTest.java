@@ -101,18 +101,18 @@ public class DatabaseTest {
     public void testIsTableEmpty() {
         Database database = new Database();
 
-        ResultSet rs = database.getMeals("All"); // Get all meals
+        ResultSet rs = database.getMeals("All");
 
         boolean tableEmpty = true;
         try {
             if (rs.next()) {
-                tableEmpty = false; // Table is not empty
+                tableEmpty = false;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        assertFalse(tableEmpty); // Assert that the table is not empty
+        assertFalse(tableEmpty);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class DatabaseTest {
         database.insertMeal(mealType, mealName, ingredients);
         String mealNameToTest = "testBreakfast";
 
-        ResultSet rs = database.getMeals("All"); // Get all meals
+        ResultSet rs = database.getMeals("All");
 
         boolean mealExists = false;
         try {
@@ -139,7 +139,7 @@ public class DatabaseTest {
             ex.printStackTrace();
         }
 
-        assertTrue(mealExists); // Assert that the specific meal exists
+        assertTrue(mealExists);
     }
 
     /**

@@ -9,8 +9,15 @@ package MealApp;
  * @author Philip
  */
 public class Main {
-    public void run(){
-        MainMenu mainMenuFrame = new MainMenu();
-        mainMenuFrame.setVisible(true);
+
+    public static void main(String[] args) {
+        Database database = new Database();
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainMenu().setVisible(true);
+            }
+        });
+
     }
 }

@@ -1,0 +1,125 @@
+Sat Oct 28 18:36:36 NZDT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Sat Oct 28 18:36:36 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-74c8-c3d0-ffffac0fd62f 
+on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\BookStoreDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Loaded from file:/C:/Users/Philip/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Oct 28 18:36:36 NZDT 2023:
+Shutting down instance a816c00e-018b-74c8-c3d0-ffffac0fd62f on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\BookStoreDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Sat Oct 28 18:36:37 NZDT 2023 Thread[DRDAConnThread_3,5,main] (DATABASE = BookStoreDB), (DRDAID = {2}), Database 'BookStoreDB' shutdown.
+----------------------------------------------------------------
+Sat Oct 28 18:36:52 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 6ede40af-018b-74c8-c3d0-ffffac0fd62f 
+on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\BookStoreDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Loaded from file:/C:/Users/Philip/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database
+Database Class Loader started - derby.database.classpath=''
+Sat Oct 28 18:38:06 NZDT 2023 Thread[DRDAConnThread_2,5,main] Cleanup action starting
+java.sql.SQLException: Database 'MealDB' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+Caused by: ERROR XJ004: Database 'MealDB' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 21 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'MealDB' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Sat Oct 28 18:38:06 NZDT 2023 Thread[DRDAConnThread_2,5,main] (DATABASE = MealDB), (DRDAID = {5}), Database 'MealDB' not found.
+----------------------------------------------------------------
+Sat Oct 28 18:38:19 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 070a00b0-018b-74c8-c3d0-ffffac0fd62f 
+on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\MealDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Loaded from file:/C:/Users/Philip/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Oct 28 18:38:19 NZDT 2023:
+Shutting down instance 070a00b0-018b-74c8-c3d0-ffffac0fd62f on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\MealDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Sat Oct 28 18:38:19 NZDT 2023 Thread[DRDAConnThread_2,5,main] (DATABASE = MealDB), (DRDAID = {7}), Database 'MealDB' shutdown.
+----------------------------------------------------------------
+Sat Oct 28 18:38:29 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance b74a0151-018b-74c8-c3d0-ffffac0fd62f 
+on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\MealDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Loaded from file:/C:/Users/Philip/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=C:\Users\Philip\Downloads\db-derby-10.14.2.0-bin
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Oct 28 19:21:21 NZDT 2023: Shutting down Derby engine
+----------------------------------------------------------------
+Sat Oct 28 19:21:21 NZDT 2023:
+Shutting down instance b74a0151-018b-74c8-c3d0-ffffac0fd62f on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\MealDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------
+Sat Oct 28 19:21:21 NZDT 2023:
+Shutting down instance 6ede40af-018b-74c8-c3d0-ffffac0fd62f on database directory C:\Users\Philip\Documents\NetBeansProjects\P93_21153150\database\BookStoreDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------
